@@ -16,7 +16,6 @@ checkAndShowMore = () => {
 performSearch = async () => {
   // Reset the resultDiv div which displays the result
   document.getElementById('result').innerHTML = ''
-  console.log(document.getElementById('result').style.display)
   document.getElementById('showMore').style.display = 'none'
   document.getElementById('status').style.display = 'block'
   document.getElementById('status').innerHTML = 'Searching...'
@@ -118,7 +117,6 @@ showResults = (resultArray) => {
     localStorage.setItem('visibleLevel', 2)
     document.getElementById('showMore').style.display = 'block'
   }
-  console.log(resultArray)
   for (let i=0; i<rows; i++) {
     let rowDiv = document.createElement('DIV')
     rowDiv.setAttribute('class', 'rowContainer')
