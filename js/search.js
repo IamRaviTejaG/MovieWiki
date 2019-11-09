@@ -155,7 +155,6 @@ showResults = (resultArray) => {
       // Append these elements to the row container
       colDiv.appendChild(p)
       rowDiv.appendChild(colDiv)
-      
     }
     document.getElementById('result').appendChild(rowDiv)
   }
