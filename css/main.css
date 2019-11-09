@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body {
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 a {
+    color: white;
+    font-size: 200%;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+.cell:hover {
+    cursor: pointer
+}
+
+.inputAndSearch {
+    margin: 0% 5% 0% 5%;
+    padding: 2%;
+    position: relative;
+}
+
+.nameText {
+    font-family: "Montserrat";
+    font-size: small;
+}
+
+.verticalSpaceThirty {
+    height: 30px;
+}
+
+.rowContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 100px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.titleDetails {
+    display: block;
+    margin-top: 3%;
+    text-align: justify;
+}
+
+#mainDiv {
+    margin: 2%;
+}
+
+#result {
+    margin: -2% 0% -2% 0%;
+    padding: 3%;
+}
+
+#searchBar {
+    border: 0;
+    border-radius: 10px;
+    display: inline-block;
+    font-family: "Montserrat";
+    font-size: large;
+    height: 40px;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 70%;
+}
+
+#backBtn, #showMore {
+    background-image: linear-gradient(to right, #02AAB0 0%, #00CDAC 51%, #02AAB0 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    display: none;
+    font-size: medium;
+    margin-left: 5%;
+    margin-right: 5%;
+    opacity: 0.8;
+    padding: 14px 28px;
+    width: 90%;
+    height: 6%;
+    transition: 0.2s;
+}
+
+#backBtn:hover, #showMore:hover {
+    opacity: 1;
+}

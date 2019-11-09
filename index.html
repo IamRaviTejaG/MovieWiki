@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MovieWiki - Your movie search ends here!</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <script src="./js/search.js"></script>
+    </head>
+    <body>
+        <div id="mainDiv">
+            <h1><a href="./index.html">MovieWiki</a></h1>
+            <div class='inputAndSearch'>
+                <input id="searchBar"
+                    placeholder="Type in keywords and press enter to search..."
+                    onfocus="this.placeholder = ''"
+                    onblur="this.placeholder = 'Type in keywords and press enter to search...'"
+                    onkeydown="triggerSearch(event)"
+                />
+            </div>
+            <p id="status"></p>
+            <div id="result"></div>
+            <!-- <button onclick="saveState()">Save state</button>
+            <button onclick="retrieveState()">Retrieve state</button> -->
+            <button id="showMore" onclick="checkAndShowMore()">Show more</button>
+            <button id="backBtn" onclick="retrieveState()">Go back to search results</button>
+        </div>
+    </body>
+</html>
