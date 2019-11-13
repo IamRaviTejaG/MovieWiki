@@ -1,5 +1,131 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+/* (any device <= 600px) */
+@media only screen and (max-width: 600px) {
+    h1 a {
+        font-size: 100%;
+    }
+
+    .inputAndSearch {
+        margin: 0% 10% 0% 10%;
+        padding: 2%;
+    }
+
+    #searchBar {
+        font-size: x-small;
+        height: 20px;
+        padding-left: 5%;
+        padding-right: 5%;
+        width: 80%;
+    }
+}
+
+/* (portrait tablets and large phones, 600px < device-width < 768px) */
+@media only screen and (min-width: 600px) {
+    h1 a {
+        font-size: 120%;
+    }
+    
+    .inputAndSearch {
+        margin: 0% 10% 0% 10%;
+        padding: 2%;
+    }
+
+    #searchBar {
+        font-size: small;
+        height: 25px;
+        padding-left: 5%;
+        padding-right: 5%;
+        width: 80%;
+    }
+}
+
+/* (tablets, 768px < device-width < 992px) */
+@media only screen and (min-width: 768px) {
+    h1 a {
+        font-size: 150%;
+    }
+
+    .inputAndSearch {
+        margin: 0% 10% 0% 10%;
+        padding: 2%;
+    }
+
+    #searchBar {
+        font-size: medium;
+        height: 30px;
+        padding-left: 4%;
+        padding-right: 4%;
+        width: 80%;
+    }
+}
+
+/* (laptops/desktops, 992px < device-width < 1200px) */
+@media only screen and (min-width: 992px) {
+    h1 a {
+        font-size: 175%;
+    }
+
+    .cell {
+        width: 160px;
+        height: 360px;
+    }
+
+    .cell > img {
+        width: 100%;
+    }
+
+    .inputAndSearch {
+        margin: 0% 8% 0% 8%;
+        padding: 2%;
+    }
+
+    .rowContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    #searchBar {
+        font-size: medium;
+        height: 30px;
+        padding-left: 4%;
+        padding-right: 4%;
+        width: 80%;
+    }
+}
+
+/* (large laptops and desktops, > 1200px) */
+@media only screen and (min-width: 1200px) {
+    h1 a {
+        font-size: 200%;
+    }
+
+    .cell {
+        height: 360px;
+        width: 190px;
+    }
+
+    .cell > img {
+        width: 100%;
+    }
+
+    .inputAndSearch {
+        margin: 0% 5% 0% 5%;
+        padding: 2%;
+    }
+
+    .rowContainer {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    #searchBar {
+        font-size: large;
+        height: 40px;
+        padding-left: 3%;
+        padding-right: 3%;
+        width: 80%;
+    }
+}
+
 body {
     background: #000000;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
@@ -13,11 +139,7 @@ body {
 
 a {
     text-decoration: none;
-}
-
-h1 a {
     color: white;
-    font-size: 200%;
 }
 
 img {
@@ -25,14 +147,12 @@ img {
     margin: auto;
 }
 
-.cell:hover {
-    cursor: pointer
+.cell {
+    margin: auto;
 }
 
-.inputAndSearch {
-    margin: 0% 5% 0% 5%;
-    padding: 2%;
-    position: relative;
+.cell:hover {
+    cursor: pointer
 }
 
 .nameText {
@@ -46,8 +166,7 @@ img {
 
 .rowContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 100px;
+    grid-gap: 20px;
     margin: 20px auto;
     padding: 10px;
 }
@@ -72,11 +191,6 @@ img {
     border-radius: 10px;
     display: inline-block;
     font-family: "Montserrat";
-    font-size: large;
-    height: 40px;
-    padding-left: 3%;
-    padding-right: 3%;
-    width: 70%;
 }
 
 #backBtn, #showMore {

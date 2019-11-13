@@ -2,9 +2,10 @@
 // items left to be shown.
 checkAndShowMore = () => {
   let a = document.getElementById('result').childNodes
-  let visibleUpto = localStorage.visibleLevel
+  let visibleUpto = parseInt(localStorage.visibleLevel)
   a[visibleUpto].style = a[0].style
   ++localStorage.visibleLevel
+
   // Disable the showMore button when no more results are available
   if (visibleUpto === a.length-1) {
     document.getElementById('showMore').style.display = 'none'
