@@ -1,10 +1,9 @@
 // Controls the "add to favorites" functionality.
 addToFavorites = (title) => {
   // Get the existing data
-	let existing = localStorage.getItem('userFav')
-
-	// If no existing data, create an array
-	// Otherwise, convert the localStorage string to an array
+  let existing = localStorage.getItem('userFav')
+  // If no existing data, create an array
+  // Otherwise, convert the localStorage string to an array
   existing = existing ? JSON.parse(existing) : []
   
   if (existing.some(userFavItem => userFavItem.imdbID === title.imdbID)) {
@@ -168,6 +167,7 @@ showDetails = async (titleID) => {
   backBtn.style.display = 'block'
   backBtn.onclick = () => { retrieveState() }
   let favBtn = document.getElementById('favBtn')
+  favBtn.innerText = 'Add to favorites'
   favBtn.style.display = 'block'
   favBtn.onclick = () => { addToFavorites(tdjson) }
   document.getElementById('showFavs').style.display = 'block'
