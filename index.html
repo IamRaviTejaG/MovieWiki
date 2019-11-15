@@ -18,10 +18,13 @@
                     onkeydown="triggerSearch(event)"
                 />
             </div>
-            <p id="status"></p>
+            <button class="btns" id="showFavs" onClick="renderFavorites()">Show Favorites</button>
             <div id="result"></div>
-            <button id="showMore" onclick="checkAndShowMore()">Show more</button>
-            <button id="backBtn" onclick="retrieveState()">Go back to search results</button>
+            <button class="btns" id="showMore" onclick="checkAndShowMore()">Show more</button>
+            <button class="btns" id="favBtn">Add to Favorites</button>
+            <div class="verticalSpaceThirty"></div>
+            <button class="btns" id="clearBtn" onclick="clearFavorites()">Clear favorites</button>
+            <button class="btns" id="backBtn" onclick="retrieveState()">Back</button>
         </div>
     </body>
 </html>

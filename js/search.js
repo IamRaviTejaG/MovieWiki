@@ -1,3 +1,21 @@
+// Controls the "add to favorites" functionality.
+addToFavorites = (title) => {
+  // Get the existing data
+	let existing = localStorage.getItem('userFav')
+
+	// If no existing data, create an array
+	// Otherwise, convert the localStorage string to an array
+  existing = existing ? JSON.parse(existing) : []
+  
+  if (existing.some(userFavItem => userFavItem.imdbID === title.imdbID)) {
+    document.getElementById('favBtn').innerText = 'Already in your favorites list!'
+  } else {
+    existing.push(title)
+    localStorage.setItem('userFav', JSON.stringify(existing))
+    document.getElementById('favBtn').innerText = 'Added!'
+  }
+}
+
 // "Show More" button functionality. Shows more content as long as there are
 // items left to be shown.
 checkAndShowMore = () => {
@@ -12,14 +30,23 @@ checkAndShowMore = () => {
   }
 }
 
+// Clears the user favorites list
+clearFavorites = () => {
+  localStorage.removeItem('userFav')
+  document.getElementById('result').innerHTML = `Cleared favorites list!`
+  clearBtn.style.display = 'none'
+}
+
 // Performs API calls and further calls showResults method to
 // render the results.
 performSearch = async () => {
   // Reset the resultDiv div which displays the result
   document.getElementById('result').innerHTML = ''
-  document.getElementById('showMore').style.display = 'none'
-  document.getElementById('status').style.display = 'block'
-  document.getElementById('status').innerHTML = 'Searching...'
+
+  // Remove all buttons
+  removeAllBtns()
+  // And then show the required buttons
+  document.getElementById('result').innerHTML = 'Searching...'
 
   let searchString = document.getElementById('searchBar').value
   if (searchString.length) {
@@ -40,16 +67,44 @@ performSearch = async () => {
       // Renders the results into the HTML
       showResults(resultArray)
     } else {
-      document.getElementById('status').innerHTML = `No matching results found!`
+      document.getElementById('result').innerHTML = `No matching results found!`
     }
   } else {
-    document.getElementById('status').innerHTML = "Please start typing a movie name and click search!"
+    document.getElementById('result').innerHTML = "Please start typing a movie name and click search!"
+  }
+}
+
+// Renders the favorites list.
+renderFavorites = () => {
+  
+  // Remove all buttons
+  removeAllBtns()
+
+  let userFavData = localStorage.userFav
+  if (!userFavData) {
+    document.getElementById('result').innerHTML = `Add titles to user favorites to get started!`
+  } else {
+    userFavData = JSON.parse(userFavData)
+    
+    showResults(userFavData)
+    removeAllBtns()
+
+    let clearBtn = document.getElementById('clearBtn')
+    clearBtn.style.display = 'block'
   }
 }
 
 // Retrieves the previous state from local storage.
 retrieveState = () => {
   document.body.innerHTML = localStorage['prevState']
+}
+
+// Removes all buttons from screen
+removeAllBtns = () => {
+  let btns = document.getElementsByClassName('btns')
+  for (let i=0; i<btns.length; i++) {
+    btns[i].style.display = 'none'
+  }
 }
 
 // Saves the current state when showing details in local storage.
@@ -61,7 +116,7 @@ saveState = () => {
 showDetails = async (titleID) => {
   // Saves current state in the local storage.
   saveState()
-  
+
   let titleDetails = await fetch(`https://omdbapi.com/?i=${titleID}&plot=full&apikey=9efd73a`, { mode: 'cors' })
   let tdjson = await titleDetails.json()
   let resDiv = document.getElementById('result')
@@ -103,21 +158,32 @@ showDetails = async (titleID) => {
     ratingP.innerHTML = `<b>RATING (IMDB)</b>: ${tdjson.Ratings[0].Value}`
     newDiv.appendChild(ratingP)
   }
+  
   resDiv.appendChild(newDiv)
-  // Remove the show more button, if it exists.
-  document.getElementById('showMore').style.display = 'none'
-  document.getElementById('backBtn').style.display = 'block'
+  
+  // Remove all buttons, and then show those required.
+  removeAllBtns()
+  
+  let backBtn = document.getElementById('backBtn')
+  backBtn.style.display = 'block'
+  backBtn.onclick = () => { retrieveState() }
+  let favBtn = document.getElementById('favBtn')
+  favBtn.style.display = 'block'
+  favBtn.onclick = () => { addToFavorites(tdjson) }
+  document.getElementById('showFavs').style.display = 'block'
 }
 
 // showResults dynamically renders the result array into the HTML.
 showResults = (resultArray) => {
-  document.getElementById('status').style.display = 'none'
+  document.getElementById('result').innerHTML = ''
+  document.getElementById('showFavs').style.display = 'block'
+
   let rows = Math.ceil(resultArray.length/5)
-  
   if (rows > 2) {
     localStorage.setItem('visibleLevel', 2)
     document.getElementById('showMore').style.display = 'block'
   }
+  
   for (let i=0; i<rows; i++) {
     let rowDiv = document.createElement('DIV')
     rowDiv.setAttribute('class', 'rowContainer')
