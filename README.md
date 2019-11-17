@@ -8,3 +8,6 @@ MovieWiki is a web application that helps user to search for any movie and view 
 ### Getting Started
 * Start by cloning the repository using: `git clone https://github.com/IamRaviTejaG/MovieWiki.git` followed by `cd MovieWiki`.
 * Now run `index.html` to get started.
+
+---
+© 2019 Ravi Teja Gannavarapu.
